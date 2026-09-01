@@ -1,0 +1,19 @@
+{
+  "name": "solar-inventory-management",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install --prefix backend && npm install --prefix frontend",
+    "predev": "npm run mongo:ensure --prefix backend",
+    "dev": "concurrently -n backend,frontend -c yellow,cyan \"npm --prefix backend run start:dev\" \"npm --prefix frontend run dev\"",
+    "build": "npm --prefix backend run build && npm --prefix frontend run build",
+    "preseed": "npm run mongo:ensure --prefix backend",
+    "seed": "npm --prefix backend run seed",
+    "lint": "npm --prefix backend run lint && npm --prefix frontend run lint",
+    "test": "npm --prefix backend run test && npm --prefix backend run test:e2e",
+    "format": "npm --prefix backend run format && npm --prefix frontend run format"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
